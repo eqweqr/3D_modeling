@@ -1,23 +1,23 @@
 from PIL import Image, ImageOps
 import matplotlib.pyplot as plt
 
-inp = list(map(int, input().split(" ")))
-x, y, r = inp
-image = Image.new('RGB', (x + 2*r+1, y + 2*r+1))
+r = int(input())
+image = Image.new('RGB', (20, 20))
 
-def Bre_cir(x0, y0, r):
+def Bre_cir(r):
     f = 1 - 2*r
     x, y = 0, r
     delta = 3 - 2*y
     while x <= y:
-        image.putpixel((x0+x, y0+y), (0, 0, 255))
-        image.putpixel((x0+x, y0-y), (0, 0, 255))
-        image.putpixel((x0-x, y0+y), (0, 0, 255))
-        image.putpixel((x0-x, y0-y), (0, 0, 255))
-        image.putpixel((x0+y, y0+x), (0, 0, 255))
-        image.putpixel((x0+y, y0-x), (0, 0, 255))
-        image.putpixel((x0-y, y0+x), (0, 0, 255))
-        image.putpixel((x0-y, y0-x), (0, 0, 255))
+        image.putpixel((x, y), (0, 0, 255))
+        image.putpixel((x, y), (0, 0, 255))
+        image.putpixel((x, y), (0, 0, 255))
+        image.putpixel((x, y), (0, 0, 255))
+        image.putpixel((y, x), (0, 0, 255))
+        image.putpixel((y, x), (0, 0, 255))
+        image.putpixel((y, x), (0, 0, 255))
+        image.putpixel((y, x), (0, 0, 255))
+        print(x, y, delta)
         if delta < 0:
             delta += 4 * x + 6
         else :
@@ -25,7 +25,7 @@ def Bre_cir(x0, y0, r):
             y -= 1
         x += 1
 
-Bre_cir(x, y, r)
+Bre_cir(r)
 image = ImageOps.flip(image)
 plt.imshow(image)
 plt.show()

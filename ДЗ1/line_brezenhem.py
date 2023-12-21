@@ -31,6 +31,7 @@ def Brezenheim(x0, x1, y0, y1, step, mode):
     for x in range(x0, x1):
         image.putpixel((moder(mode, x, y)), (0, 0, 255))
         err = err + deltaerr
+        print(x, y, err)
         if err >= deltax + 1:
             y = y + step
             err -= deltax + 1
